@@ -1,0 +1,20 @@
+{
+  "name": "nodejsmentoringprogram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon --exec npx babel-node app.js",
+    "test": ""
+  },
+  "author": "Dzianis Bunchanka <Dzianis_Bunchanka@epam.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-stage-2": "6.24.1",
+    "babel-register": "6.26.0",
+    "nodemon": "1.17.3"
+  }
+}

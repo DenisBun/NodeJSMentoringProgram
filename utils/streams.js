@@ -1,7 +1,7 @@
-import fs from 'fs';
-import minimist from 'minimist';
-import csvtojson from 'csvtojson';
-import through2 from 'through2';
+const minimist = require('minimist');
+const through2 = require('through2');
+const fs = require('fs');
+const csv2json = require('csvtojson');
 
 process.stdin.setEncoding('utf8');
 

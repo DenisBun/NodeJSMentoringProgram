@@ -1,16 +1,8 @@
-import config from './config/config.json';
-import models from './config/models';
+import express from 'express';
+import middlewares from './config/middlewares';
 
-import DirWatcher from './modules/dirwatcher';
-import Importer from './modules/importer';
+const app = express();
 
-const { User, Product } = models;
+middlewares(app);
 
-new User();
-new Product();
-
-const importer = new Importer();
-const watcher = new DirWatcher();
-
-importer.listen();
-watcher.watch('data', 5000);
+export default app;

@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --exec npx babel-node app.js",
+    "start": "nodemon --exec npx babel-node index.js",
     "test": ""
   },
   "author": "Dzianis Bunchanka <Dzianis_Bunchanka@epam.com>",
@@ -22,6 +22,7 @@
   "dependencies": {
     "csvtojson": "1.1.9",
     "eventemitter3": "3.1.0",
+    "express": "^4.16.3",
     "lodash": "4.17.10"
   }
 }

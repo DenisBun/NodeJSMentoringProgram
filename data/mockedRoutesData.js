@@ -11,10 +11,12 @@ const data = {
   users: [
     {
       id: '1',
-      email: 'user@user.com',
+      email: 'w@user.com',
+      password: '12345',
     }, {
       id: '2',
-      email: 'user@gmail.com',
+      email: 'e@gmail.com',
+      password: '123456',
     }
   ],
   reviews: [

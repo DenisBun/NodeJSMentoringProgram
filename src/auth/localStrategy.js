@@ -18,13 +18,13 @@ const passportLocal = () => {
       : done(null, false, { message: 'User not found or password incorrect'});
   }));
 
-  passport.serializeUser((user, done) => {
-    done(null, user);
-  });
+  // passport.serializeUser((user, done) => {
+  //   done(null, user);
+  // });
   
-  passport.deserializeUser((user, done) => {
-    done(null, user);
-  });
+  // passport.deserializeUser((user, done) => {
+  //   done(null, user);
+  // });
 };
 
 export default passportLocal;

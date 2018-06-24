@@ -1,11 +1,10 @@
 import express from 'express';
-import data from '../data/mockedRoutesData';
-
+import models from '../database/models/index';
 
 const router = express.Router();
 
 router.get('/api/users', (req, res) => {
-  res.json(data.users);
+  models.Users.findAll({attributes: ['id', 'firstName', 'lastName']}).then(users => res.json(users));
 });
 
 

@@ -6,12 +6,12 @@ import data from '../data/mockedRoutesData';
 const router = express.Router();
 
 router.post('/auth', 
-  passport.authenticate('local'),
+  // passport.authenticate('local'),
   (req, res) => {
     const { login, password } = req.body;
     const isUserExists = data.users.some(({email,password}) => email === login && password === password);
     if (isUserExists) {
-        const token = jwt.sign({ login, password }, 'secret', { expiresIn: 60 });
+        // const token = jwt.sign({ login, password }, 'secret', { expiresIn: 60 });
         res.send({
           code: 200,
           message: 'OK',

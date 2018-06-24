@@ -10,17 +10,17 @@ import cookiesParser from '../middlewares/cookieParser';
 import queryParser from '../middlewares/queryParser';
 
 const middlewares = app => {
-  localAuthStrategy();
-  facebookStrategy();
-  twitterStrategy();
-  googleStrategy();
+  // localAuthStrategy();
+  // facebookStrategy();
+  // twitterStrategy();
+  // googleStrategy();
 
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(cookiesParser);
   app.use(queryParser);
-  app.use(passport.initialize());
-  app.use(passport.session());
+  // app.use(passport.initialize());
+  // app.use(passport.session());
 };
 
 export default middlewares;

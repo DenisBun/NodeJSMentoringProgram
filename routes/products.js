@@ -1,28 +1,29 @@
 import express from 'express';
-import jwtVerifier from '../middlewares/jwtVerifier';
-import data from '../data/mockedRoutesData';
+import models from '../database/models/index';
 
 const router = express.Router();
 
-router.use('/api', jwtVerifier);
 
 router.get('/api/products', (req, res) => {
-    res.json(data.products);
+  models.Products.findAll({attributes: ['id', 'name', 'brand', 'price']}).then(products =>res.json(products));
 });
 
 router.get('/api/products/:id', (req, res) => {
-  const product = data.products.filter(product => product.id === req.params.id);
-  res.json(product);
+  models.Products.findAll({
+    attributes: ['id', 'name', 'brand', 'price'], 
+    where: {
+      id: req.params.id
+    }
+  }).then(products =>res.json(products));
 });
 
-router.get('/api/products/:id/reviews', (req, res) => {
-  const reviews = data.reviews.filter(review => review.productId === req.params.id);
-  res.json(reviews.length ? reviews : {});
-});
+// router.get('/api/products/:id/reviews', (req, res) => {
+//   const reviews = data.reviews.filter(review => review.productId === req.params.id);
+//   res.json(reviews.length ? reviews : {});
+// });
 
 router.post('/api/products',  (req, res) => {
-  data.products = [...data.products, req.body];
-  res.json(req.body);
+  models.Products.create(req.body).then(products =>res.json(products));
 });
 
 export default router; 

@@ -1,8 +1,9 @@
-const mongo = require('mongodb').MongoClient;
-const assert = require('assert');
-const express = require ('express');
+import express from 'express';
+import mongoose from 'mongoose';
+import City from '../schemas/citySchema';
+import appendLastModifiedData from '../utils/appendLastModifiedData';
 
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb://localhost:27017/nodeMentoring';
 const dbName = 'nodeMentoring';
 const router = express.Router();
 
@@ -16,33 +17,34 @@ router.post('/api/cities', (req, res) => {
         long: 23.734050,
     },
   };
-  mongo.connect(url, (err, client) => {
-    assert.equal(null, err);
-    console.log('Connected successfully to server via route POST /api/cities');
-    const db = client.db(dbName);
-    db.collection('cities-data').insertOne(city, (error, result) => {
-      assert.equal(null, err);
-      console.log('City inserted');
-      res.status(200);
-      client.close();
-    });    
+  mongoose.connect(url);
+  const data = new City(city);
+  appendLastModifiedData(data).save(err => {
+    if (err) return console.error(err);
+    console.log('saved!');
+    res.json(city);
   });
 });
 
 router.get('/api/cities', (req, res) => {
-  const resultArr = [];
-  mongo.connect(url, (err, client) => {
-    assert.equal(null, err);
-    console.log('Connected successfully to server via route GET /api/cities');
-    const db = client.db(dbName);
-    const cursor = db.collection('cities-data').find();
-    cursor.forEach((doc, err) => {
-      assert.equal(null, err);
-      resultArr.push(doc);
-    }, () => {
-      res.json(resultArr);
-      client.close();
-    });
+  mongoose.connect(url);
+  City.find({}, (err, cities) => {
+    if (err) return console.error(err);
+    res.json(cities);
+  })
+});
+
+router.put('/api/cities/:id', (req, res) => {
+  mongoose.connect(url);
+  City.findOneAndUpdate(req.body.capital, { $set: { city: req.body.city, capital: req.body.capital }}, {}, () => {
+    res.json(req.body);
+  })
+});
+
+router.delete('/api/cities/:id', (req, res) => {
+  mongoose.connect(url);
+  City.deleteOne({ id: req.params.id }, err => {
+    res.json(req.params.id);
   });
 });
 

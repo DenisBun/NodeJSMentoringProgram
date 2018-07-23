@@ -1,0 +1,127 @@
+definitions:
+  User:
+    type: object
+    properties:
+      _id:
+        type: integer
+        format: int64
+        example: 1
+        description: User id
+      name:
+        type: string
+        example: test@epam.com
+        description: User name
+      age:
+        type: integer
+        format: int64
+        example: 34
+        description: age of user
+      isAdmin:
+        type: boolean
+        example: false
+        description: is user admin
+      lastModifiedDate:
+        type: string
+        example: 2018-07-01T13:51:40.392Z
+        description: last modified
+  Product:
+    type: object
+    properties:
+      reviews:
+        type: object
+        propetries:
+          color:
+            type: string
+            example: blue
+            description: color param
+          size:
+            type: string
+            example: XL
+            description: size param
+      _id:
+        type: string
+        example: 5b38dd8652a9211eec58815e
+        description: User id
+      name:
+        type: string
+        example: Supreme T-Shirt
+        description: name of product
+      brand:
+        type: string
+        example: Supreme
+        description: brand of product
+      price:
+        type: integer
+        format: int64
+        example: 99.99
+        description: price of product
+      lastModifiedDate:
+        type: string
+        example: 2018-07-01T13:51:40.392Z
+        description: last modified
+  CreateSingleProduct:
+    properties:
+      reviews:
+        type: object
+        properties:
+          color:
+            type: string
+            example: blue
+            description: color param
+          size:
+            type: string
+            example: XL
+            description: size param
+      name:
+        type: string
+        example: Supreme T-Shirt
+        description: name of product
+      brand:
+        type: string
+        example: Supreme
+        description: brand of product
+      price:
+        type: integer
+        format: int64
+        example: 99.99
+        description: price of product
+  Review:
+    properties:
+      reviews:
+        type: object
+        properties:
+          color:
+            type: string
+            example: blue
+            description: color param
+          size:
+            type: string
+            example: XL
+            description: size param
+  Cities:
+    properties:
+      location:
+        type: object
+        properties:
+          lat:
+            type: integer
+            format: int64
+            example: 52.097621
+          long:
+            type: integer
+            format: int64
+            example: 23.73405
+      capital:
+        type: boolean
+        example: false
+        description: is capital or not
+      name:
+        type: string
+        example: Brest
+        description: city name
+      country:
+        type: string
+        example: Belarus
+        description: Capital of city
+  
+    

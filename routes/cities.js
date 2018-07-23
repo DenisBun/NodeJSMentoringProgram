@@ -7,6 +7,29 @@ const url = 'mongodb://localhost:27017/nodeMentoring';
 const dbName = 'nodeMentoring';
 const router = express.Router();
 
+/**
+* @swagger
+* /api/cities:
+*   post:
+*     tags:
+*       - Cities
+*     summary: Create city
+*     operationId: createCity
+*     consumes:
+*       - application/json
+*     produces:
+*       - application/json
+*     parameters:
+*       - $ref: '#/parameters/City'
+*     responses:
+*       200:
+*         description: successful operation
+*         schema:
+*           $ref: '#/responses/CitiesResponse'
+*       400:
+*         description: Cannot find user
+*/
+
 router.post('/api/cities', (req, res) => {
   const city = req.body || {
     name: 'Brest',
@@ -26,6 +49,26 @@ router.post('/api/cities', (req, res) => {
   });
 });
 
+/**
+* @swagger
+* /api/cities:
+*   get:
+*     tags:
+*       - Cities
+*     summary: Get all cities
+*     operationId: getAllCities
+*     produces:
+*       - application/json
+*     parameters: []
+*     responses:
+*       200:
+*         description: successful operation
+*         schema:
+*           $ref: '#/responses/CitiesResponse'
+*       400:
+*         description: Invalid request
+*/
+
 router.get('/api/cities', (req, res) => {
   mongoose.connect(url);
   City.find({}, (err, cities) => {
@@ -34,12 +77,56 @@ router.get('/api/cities', (req, res) => {
   })
 });
 
+/**
+* @swagger
+* /api/cities/{id}:
+*   put:
+*     tags:
+*       - Cities
+*     summary: Update city
+*     operationId: updateCity
+*     consumes:
+*       - application/json
+*     produces:
+*       - application/json
+*     parameters:
+*       - $ref: '#/parameters/CityId'
+*       - $ref: '#/parameters/UpdatedOrNewCity'
+*     responses:
+*       200:
+*         description: successful operation
+*         schema:
+*         -$ref: '#/responses/CitiesResponse'
+*       400:
+*         description: Cannot find user
+*/
+
+
 router.put('/api/cities/:id', (req, res) => {
   mongoose.connect(url);
   City.findOneAndUpdate(req.body.capital, { $set: { city: req.body.city, capital: req.body.capital }}, {}, () => {
     res.json(req.body);
   })
 });
+
+/**
+* @swagger
+* /api/cities/{id}:
+*   delete:
+*     tags:
+*       - Cities
+*     summary: Find city by id and delete
+*     operationId: deleteCity
+*     produces:
+*       - application/json
+*     parameters:
+*       - $ref: '#/parameters/CityId'
+*     responses:
+*       200:
+*         description: city was deleted
+*       400:
+*         description: Cannot find city
+*/
 
 router.delete('/api/cities/:id', (req, res) => {
   mongoose.connect(url);

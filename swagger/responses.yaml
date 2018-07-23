@@ -1,0 +1,80 @@
+responses:
+  UsersResponse:
+    type: object
+    properties:
+      users:
+        type: array
+        items:
+          $ref: '#/definitions/User'
+    example:
+      users:
+      - _id: 1
+        name: test
+        age: 23
+        isAdmin: true
+        lastModifiedDate: 2018-07-01T13:51:40.392Z
+      - _id: 2
+        name: test2
+        age: 26
+        isAdmin: false
+        lastModifiedDate: 2018-07-01T13:51:40.392Z
+  ProductsResponse:
+    type: object
+    properties:
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/Product'
+    example:
+      products:
+      - reviews:
+          color: blue
+          size: XL
+        _id: 5b38dd8652a9211eec58815e
+        name: Supreme 2asd
+        brand: Supreme
+        price: 99.99
+        lastModifiedDate: 2018-07-01T13:51:40.392Z
+      - reviews:
+          color: green
+          size: XXL
+        _id: 5b38dd8652a9211asc58815e
+        name: Supreme 3asd
+        brand: Supreme2
+        price: 123
+        lastModifiedDate: 2018-07-01T13:51:40.392Z
+  SingleProduct:
+    type: object
+    properties:
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/Product'
+    example:
+      products:
+      - reviews:
+          color: blue
+          size: XL
+        _id: 5b38dd8652a9211eec58815e
+        name: Supreme 2asd
+        brand: Supreme
+        price: 99.99
+        lastModifiedDate: 2018-07-01T13:51:40.392Z
+  Review:
+    type: object
+    properties:
+      products:
+        type: array
+        items:
+          $ref: '#/definitions/Review'
+    example:
+      - reviews:
+          color: blue
+          size: XL
+  CitiesResponse:
+    type: object
+    properties:
+      cities:
+        type: array
+        items:
+          $ref: '#/definitions/Cities'

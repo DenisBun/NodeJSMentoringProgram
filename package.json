@@ -16,6 +16,7 @@
     "babel-preset-stage-2": "6.24.1",
     "babel-register": "6.26.0",
     "minimist": "1.2.0",
+    "mongodb": "^3.1.0",
     "nodemon": "1.17.3",
     "through2": "2.0.3"
   },
@@ -26,6 +27,7 @@
     "express-promise-router": "^3.0.2",
     "jsonwebtoken": "8.3.0",
     "lodash": "4.17.10",
+    "mongoose": "^5.1.7",
     "passport": "0.4.0",
     "passport-facebook": "2.1.1",
     "passport-google-oauth": "1.0.0",
